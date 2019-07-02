@@ -10,13 +10,14 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    const ROLES = [1 => 'Manager', 2 => 'Developer'];
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','roles'
+        'name', 'email', 'password', 'roles'
     ];
 
     /**
