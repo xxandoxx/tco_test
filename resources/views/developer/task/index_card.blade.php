@@ -11,7 +11,7 @@
     <div class="card-body">
         <h5 class="card-title">{{$item['title']}}</h5>
         <h6 class="card-subtitle mb-2 text-muted">{{date('d-m-Y', strtotime($item['deadline']))}}</h6>
-        <h6 class="card-subtitle mb-2 text-muted">{{$status[$item['status']]}}</h6>
+        <h6 id="status_{{$item['id']}}" class="card-subtitle mb-2 text-muted">{{$status[$item['status']]}}</h6>
         <p class="card-text">{{$item['description']}}</p>
         @if(!empty($item['assign']))
             <div>
@@ -26,7 +26,7 @@
     </div>
 
     <div class="col">
-        <form method="POST" action="{{ route('task.update',$item['id']) }}">
+        <form method="POST" id="form_{{$item['id']}}" action="{{ route('task.update',$item['id']) }}">
             @csrf
             {{ method_field('PUT') }}
             <div class="form-group row">
@@ -34,8 +34,9 @@
                 <div class="col-md-6">
                     <select class="form-control" id="status" name="status">
                         @foreach($status as $key => $val)
-                            <option @if($key == $item['status']) disabled
-                                    @endif value="{{$key}}">{{$val}}</option>
+                            <option
+                                    @if($key == $item['status']) selected @endif
+                            value="{{$key}}">{{$val}}</option>
                         @endforeach
                     </select>
                     @error('status')
