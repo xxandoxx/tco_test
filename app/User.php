@@ -38,4 +38,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'roles' => 'integer',
     ];
+
+    static function getDevelopersList()
+    {
+        return self::where('roles', 2)->get();
+    }
 }

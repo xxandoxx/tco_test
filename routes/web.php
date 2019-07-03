@@ -18,3 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::prefix('manager')->group(function () {
+    Route::resources([
+        'task' => 'ManagerTaskController'
+    ]);
+});
+
