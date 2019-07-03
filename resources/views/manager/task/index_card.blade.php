@@ -18,15 +18,19 @@
                 <h6>Developer(s)</h6>
                 {{--@dd($item,$developers)--}}
                 @foreach ($item['assign'] as $assign)
-                    <span class="text-black-50">{{$developers[$assign['developer_id']]['name']}}</span><br>
+                    <span class="text-black-50">{{$developers[$assign['developer_id']]['name']}}
+                        | assign: manager::id-{{$assign['manager_id']}}</span><br>
                 @endforeach
             </div>
 
         @endif
+        <hr>
+        <span class="card-subtitle mb-2 text-muted">create: manager::id-{{$item['user_id']}}</span>
+        <br>
     </div>
-    @if($item['status']==1)
+    @if($item['status']!=3)
         <div class="col">
-            <form method="POST" action="{{ route('task.update',$item['id']) }}">
+            <form method="POST" action="{{ route('ManagerTask.update',$item['id']) }}">
                 @csrf
                 {{ method_field('PUT') }}
                 <div class="form-group row">

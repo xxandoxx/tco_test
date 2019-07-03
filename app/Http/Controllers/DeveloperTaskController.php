@@ -10,6 +10,13 @@ use Illuminate\Validation\Rule;
 
 class DeveloperTaskController extends Controller
 {
+
+    public function __construct()
+    {
+//        $this->middleware('AuthDeveloper');
+    }
+
+
     /**
      * Display a listing of the resource.
      *

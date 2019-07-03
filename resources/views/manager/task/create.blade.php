@@ -16,7 +16,7 @@
                     <div class="card-header">{{ __('Task') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('task.store') }}">
+                        <form method="POST" action="{{ route('ManagerTask.store') }}">
                             @csrf
 
                             <div class="form-group row">

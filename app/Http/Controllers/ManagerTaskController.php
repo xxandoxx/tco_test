@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Validator;
 
 class ManagerTaskController extends Controller
 {
+    public function __construct()
+    {
+//        $this->middleware('AuthManager');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -68,7 +73,7 @@ class ManagerTaskController extends Controller
             'user_id' => auth()->user()->id,
             'status' => '1'
         ]);
-        return redirect()->route('task.index');
+        return redirect()->route('ManagerTask.index');
     }
 
     /**
@@ -111,7 +116,7 @@ class ManagerTaskController extends Controller
             'manager_id' => auth()->user()->id,
             'status' => '1'
         ]);
-        return redirect()->route('task.index');
+        return redirect()->route('ManagerTask.index');
     }
 
 

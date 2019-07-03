@@ -20,14 +20,16 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::middleware(['AuthManager'])->prefix('manager')->group(function () {
-    Route::resources([
-        'task' => 'ManagerTaskController'
-    ]);
+Route::middleware('AuthManager')->prefix('/manager')->group(function () {
+    Route::resources(
+        ['task' => 'ManagerTaskController'],
+        ['names' => 'ManagerTask']
+    );
 });
 
-Route::middleware(['AuthDeveloper'])->prefix('developer')->group(function () {
-    Route::resources([
-        'task' => 'DeveloperTaskController'
-    ]);
+Route::middleware('AuthDeveloper')->prefix('/developer')->group(function () {
+    Route::resources(
+        ['task' => 'DeveloperTaskController'],
+        ['names' => 'DeveloperTask']
+    );
 });

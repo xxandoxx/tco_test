@@ -31,7 +31,11 @@ class Task extends Model
     {
         return $this
             ->where('user_id', auth()->user()->id)
-            ->orDoesntHave('assign')->with('assign');
+            ->orWhereHas('assign', function ($query) {
+                $query->where('manager_id', auth()->user()->id);
+            })
+            ->orDoesntHave('assign')
+            ->with('assign');
     }
 
     public function getDeveloperList()

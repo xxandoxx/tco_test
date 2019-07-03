@@ -26,7 +26,7 @@
     </div>
 
     <div class="col">
-        <form method="POST" id="form_{{$item['id']}}" action="{{ route('task.update',$item['id']) }}">
+        <form method="POST" id="form_{{$item['id']}}" class="developerUpdate" action="{{ route('DeveloperTask.update',$item['id']) }}">
             @csrf
             {{ method_field('PUT') }}
             <div class="form-group row">

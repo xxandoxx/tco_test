@@ -20,7 +20,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            $('form').on("submit", function (e) {
+            $('form.developerUpdate').on("submit", function (e) {
                 e.preventDefault();
                 const form = $(this);
                 let action = form.attr('action');
