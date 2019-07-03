@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property integer id
+ * @property integer status
  */
 class Task extends Model
 {
@@ -31,5 +32,13 @@ class Task extends Model
         return $this
             ->where('user_id', auth()->user()->id)
             ->orDoesntHave('assign')->with('assign');
+    }
+
+    public function getDeveloperList()
+    {
+        return $this
+            ->whereHas('assign', function ($query) {
+                $query->where('developer_id', auth()->user()->id);
+            })->with('assign');
     }
 }
